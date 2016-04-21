@@ -1,0 +1,20 @@
+/**
+ * Created by Igor.
+ */
+public class Demo {
+    public static void main (String[]args) {
+
+        Reader r = new Reader();
+        r.Scan();
+        r.q = count(r.q);
+        r.w = count(r.q);
+        r.Scan(r.q, r.w);
+        System.out.println("Your first number equals " + r.q);
+        System.out.println("Your second number equals" + r.w);
+    }
+
+    private static int count(int x) {
+        x = x*2;
+        return x;
+    }
+}
