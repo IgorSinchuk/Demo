@@ -1,0 +1,16 @@
+import javax.swing.*;
+
+/**
+ * Created by Igor.
+ */
+public class Demo {
+    public static void main (String[]args) {
+
+       Reader r = new Reader("First");
+        r.setVisible(true);// видимое окно
+        r.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//закрыть окно
+        r.setSize(300, 200);// размер окна
+        r.setResizable(false);//нельзя менять размер окна
+        r.setLocationRelativeTo(null);//центральное расположение окна
+    }
+}
