@@ -1,0 +1,25 @@
+import javax.swing.*;
+
+/**
+ * Created by Igor.
+ */
+public class Reader {
+    int q, w;
+    String x1, x2;
+
+
+    public void Scan() {
+        x1 = JOptionPane.showInputDialog("Input first number");//метод для ввывода графической панели
+        x2 = JOptionPane.showInputDialog("Input second number");
+
+        q = Integer.parseInt(x1);// метод переводит из String в тип Integer
+        w = Integer.parseInt(x2);
+    }
+
+
+    public void Scan(int a, int b) {
+        JOptionPane.showMessageDialog(null, "Your first number is = " + a);
+        JOptionPane.showMessageDialog(null, "Your second number is = " + b);
+    }
+
+}
