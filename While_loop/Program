@@ -1,0 +1,12 @@
+/**
+ * Created by Igor.
+ */
+public class Program {
+    public static void main(String [] args) {
+        int x = 3;
+        while(x>3) {
+            System.out.println(x);
+            x--;
+        }
+    }
+}
