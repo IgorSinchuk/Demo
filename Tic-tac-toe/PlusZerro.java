@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * Created by Столик on 28.04.2016.
+ * Created by Igor.
  */
 public class PlusZerro {
     // Размер игровово поля
