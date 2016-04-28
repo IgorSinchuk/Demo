@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class PlusZerro {
     // Размер игровово поля
     private static final byte bPoleSize = 3;
-    // Задаем поле как (!)одномерный массив bPoleSize*bPoleSize (неожиданно?)
+    // Задаем поле как (!)одномерный массив bPoleSize*bPoleSize 
     private static String[] pole = new String[bPoleSize * bPoleSize];
     // А тут у нас задается текущий игрок
     private static byte bPlayerNum = 0;
