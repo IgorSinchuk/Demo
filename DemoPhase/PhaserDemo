@@ -1,0 +1,73 @@
+import java.util.concurrent.Phaser;
+
+/**
+ * Created by Igor on 26.07.2016.
+ */
+public class PhaserDemo {
+    public static void main(String[] args) {
+        Phaser phaser = new Phaser(1);
+        int curPhase;
+
+        System.out.println("Starting threads");
+        new MyThread(phaser, "a");
+        new MyThread(phaser, "b");
+        new MyThread(phaser, "c");
+
+        //Phase 1
+        curPhase = phaser.getPhase();
+        phaser.arriveAndAwaitAdvance();
+        System.out.println("Phase " + curPhase + " Done");
+
+        //Phase 2
+        curPhase = phaser.getPhase();
+        phaser.arriveAndAwaitAdvance();
+        System.out.println("Phase " + curPhase + " Done");
+
+        //Phase 3
+        curPhase = phaser.getPhase();
+        phaser.arriveAndAwaitAdvance();
+        System.out.println("Phase " + curPhase + " Done");
+
+        //снять основной поток исполнения с регистрации
+        phaser.arriveAndDeregister();
+
+        if (phaser.isTerminated())
+            System.out.println("Synchronized of phases done");
+
+
+    }
+}
+
+    class MyThread  implements Runnable {
+        Phaser phaser;
+        String name;
+
+        MyThread(Phaser p, String n) {
+            phaser = p;
+            name = n;
+            phaser.register();
+            new Thread(this).start();
+        }
+
+        public void run() {
+            System.out.println("Thread " + name + " starting new phase");
+            phaser.arriveAndAwaitAdvance(); // известить о достижении фазы
+            // небольшая пауза для нарушения порядка вывода(только в качестве примера)
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+
+            System.out.println("Thread " + name + " starting 2nd phase");
+            phaser.arriveAndAwaitAdvance();// известить о достижении фазы
+            // небольшая пауза для нарушения порядка вывода(только в качестве примера)
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+            System.out.println("Thread " + name + " starting 3rd phase");
+            phaser.arriveAndAwaitAdvance();// известить о достижении фазы
+        } // снять поток с регистрации
+    }
